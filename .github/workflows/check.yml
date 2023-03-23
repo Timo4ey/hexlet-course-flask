@@ -1,5 +1,7 @@
 name: Hexlet course Flask
-on: [push, pull-request]
+on: 
+  - push
+  - pull-request
 
 jobs:
   build:
