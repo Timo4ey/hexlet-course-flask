@@ -1,5 +1,3 @@
-import gunicorn
-
 
 def app(environ, start_response):
     data = b"Hello, World!\n"
