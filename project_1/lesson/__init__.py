@@ -1,4 +1,4 @@
-from .server import server
+from .example import hello_world
 
 
-__all__ = ["server"]
+__all__ = ['hello_world']
