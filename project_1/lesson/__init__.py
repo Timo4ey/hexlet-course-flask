@@ -1,4 +1,4 @@
-from .example import hello_world
+from .example import users_get, users_post
 
 
-__all__ = ['hello_world']
+__all__ = ['users_get', 'users_post']
