@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -17,3 +17,11 @@ def users_post():
 @app.route("/course/<int:id>")
 def get_course(id):
     return f"Course id: {id}"
+
+
+@app.route('/users/<id>')
+def get_name(id):
+    return render_template(
+        'index.html',
+        name=id,
+    )
