@@ -1,0 +1,46 @@
+.names {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+div.search {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 94vw;
+    height: 50px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: gray;
+}
+
+.search input{
+    height: 27px;
+    width: 260px;
+    border-radius: 5px;
+    border-color:#b8c2ca;
+    margin-right: 10px;
+    border-width: 3px
+}
+
+.search input:visited,
+.search input:focus,
+.search input:hover{
+    border-color:#2196f3;
+    border-width: 3px
+}
+
+
+.search button{
+    height: 25px;
+    width: 80px;
+    border-radius: 5px;
+    border-color:#b8c2ca;
+    background-color: aliceblue;
+    border-width: 1px;
+}
+
+.search button:hover{
+    background-color: rgb(226, 237, 247);
+}
