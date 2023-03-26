@@ -1,7 +1,17 @@
 [
     {
         "id": 1,
-        "nickname": "Hjhjd",
-        "email": "dfdfdf"
+        "nickname": "tom",
+        "email": "tom@f.com"
+    },
+    {
+        "id": 2,
+        "nickname": "Tommas",
+        "email": "toms@f.com"
+    },
+    {
+        "id": 3,
+        "nickname": "cort",
+        "email": "cort@f.com"
     }
 ]

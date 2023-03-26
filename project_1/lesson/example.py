@@ -28,9 +28,11 @@ def get_name(id):
 @app.route("/users")
 def get_users():
     term = request.args.get('term')
-    select_users = list(map(lambda x: x['nickname'], Paths.read_json()))
+    select_users = Paths.read_json()
     if term:
-        select_users = list(filter(lambda x: x.find(term) != -1, select_users))
+        select_users = list(filter(
+                        lambda x: x['nickname'][:3].lower().find(term) != -1,
+                        select_users))
     return render_template("users/index.html", users=select_users)
 
 

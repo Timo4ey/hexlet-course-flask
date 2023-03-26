@@ -18,7 +18,7 @@
     <div>
         <ul>
             {% for user in users %}
-            <li class="names">{{user|e}}</li>
+            <li class="names"><a href="/users/{{ user.id|e }}"> {{user.nickname|e}}</a></li>
             {% endfor %}
         </ul>
     </div>
