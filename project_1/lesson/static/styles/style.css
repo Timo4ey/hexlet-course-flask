@@ -44,3 +44,59 @@ div.search {
 .search button:hover{
     background-color: rgb(226, 237, 247);
 }
+
+body.new_user h1 {
+    margin-top: 10px;
+    font-size: 60px;
+    border-bottom-style: solid;
+    border-bottom-color: #b8c2ca;
+    /* border-bottom-width: 0.5px; */
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 50px;
+}
+
+.new_user div form label{
+    display: block;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.new_user div form .frame input{
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 80px;
+    border-color: #eaf2f9;
+    border-width: 0.1px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.new_user div form input:hover{
+    border-color:#2196f3;
+    outline: none !important;
+    box-shadow: 0 0 10px #719ECE;
+}
+.new_user div form input:focus{
+    border:1px solid #2196f3;
+    outline: none !important;
+    box-shadow: 0 0 10px #719ECE;
+}
+.new_user form label.btn {
+    margin-left: 15px;
+}
+
+.new_user form label.btn input{
+    padding: 7px 14px 7px 14px;
+    border-radius: 5px;
+    border:1px solid #dfe1e4;
+}
+
+
+.new_user form label p{
+    display: inline-block;
+}

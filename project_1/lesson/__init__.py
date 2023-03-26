@@ -1,4 +1,4 @@
-from .example import get_course, get_users
+from .example import register_user, save_user, get_name
 
 
-__all__ = ['get_users', 'get_course']
+__all__ = ['register_user', 'save_user', 'get_name']
