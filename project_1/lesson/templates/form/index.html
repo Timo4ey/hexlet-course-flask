@@ -10,17 +10,13 @@
 <body class="new_user">
     <h1 >New user</h1>
     <div>
-        <form action="/users/new/ {{ user_id }}">
-            <label for="" class="frame">
-                <p>Nickname:</p>
-                <input type="text" name="nickname">
-            </label>
-            <label for="" class="frame">Email: 
-                <input type="text" name="email">
-            </label>
-            <label for="" class="btn">
-                <button type="but">submit</button>
-            </label>
+        <form action="/users/new", method='post'>
+
+            {{ form.csrf_token }}
+            {{ form.nickname.label }} {{ form.nickname(size=20) }}
+            {{ form.csrf_token }}
+            {{ form.email.label }} {{ form.email(size=20) }}
+            <button type="submit">submit</button>
         </form>
     </div>
 </body>

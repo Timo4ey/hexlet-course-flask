@@ -9,6 +9,7 @@ packages = [{include = "project_1"}]
 [tool.poetry.dependencies]
 python = ">=3.10"
 flask = "^2.2.3"
+flask-wtf = "^1.1.1"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -13,7 +13,10 @@ class Paths:
     def read_json(cls):
         path = os.path.join(os.path.dirname(__file__), 'data/users.json')
         with open(path, 'r') as f:
-            return json.loads(f.read())
+            file = f.read()
+            if file:
+                return json.loads(file)
+            return ''
 
     def get_data_dir(self):
         return os.path.join(self.dir, 'data')
