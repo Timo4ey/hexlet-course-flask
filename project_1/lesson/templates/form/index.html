@@ -14,8 +14,14 @@
 
             {{ form.csrf_token }}
             {{ form.nickname.label }} {{ form.nickname(size=20) }}
+            {% if errors['nickname'] %}
+                <div class="errors">{{ errors['nickname'] }}</div>
+            {% endif %}
             {{ form.csrf_token }}
             {{ form.email.label }} {{ form.email(size=20) }}
+            {% if errors['nickname'] %}
+                <div class="errors">{{ errors['email'] }}</div>
+            {% endif %}
             <button type="submit">submit</button>
         </form>
     </div>

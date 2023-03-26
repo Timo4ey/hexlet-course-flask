@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from .users_db.users import Users, UserMaker
 from .users_db.paths import Paths
 import os
-from .forms import RegistrationForm
+from .forms.forms import RegistrationForm, Validator
 
 
 app = Flask(__name__)
@@ -43,7 +43,8 @@ def register_user():
     form = RegistrationForm()
     return render_template(
         "form/index.html",
-        form=form)
+        form=form,
+        errors={})
 
 
 @app.route('/users/new/', methods=["POST", "GET"])
@@ -53,6 +54,14 @@ def save_user():
     email = form.email.data
 
     user = Users(nickname, email)
-    maker = UserMaker(user)
-    maker.gen_user()
-    return redirect(url_for('get_users'))
+    validator = Validator(user)
+    validator.validate_name()
+    validator.validate_email()
+    if validator.is_valid() is True:
+        maker = UserMaker(user)
+        maker.gen_user()
+        return redirect(url_for('get_users'), code=302)
+    return render_template(
+        "form/index.html",
+        form=form,
+        errors=validator.is_valid())

@@ -109,3 +109,9 @@ body.new_user h1 {
 .new_user form label p{
     display: inline-block;
 }
+
+.errors {
+    color: red;
+    font-size: 18px;
+
+}
