@@ -10,6 +10,11 @@ SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 
+@app.route('/', methods=["GET", "POST"])
+def main_page():
+    return render_template("index.html")
+
+
 @app.route('/users/<int:id>')
 def get_name(id):
     data = Paths.read_json()
@@ -20,11 +25,11 @@ def get_name(id):
         (user, ) = result
     if user:
         return render_template(
-            'index.html',
+            url_for('main_page'),
             name=user['nickname'],
             id=user['id'],
         )
-    return redirect('/users/new')
+    return redirect(url_for("register_user"))
 
 
 @app.route("/users")
@@ -47,7 +52,7 @@ def register_user():
         errors={})
 
 
-@app.route('/users/new/', methods=["POST", "GET"])
+@app.route('/users', methods=["POST", "GET"])
 def save_user():
     form = RegistrationForm()
     nickname = form.nickname.data
@@ -60,7 +65,7 @@ def save_user():
     if validator.is_valid() is True:
         maker = UserMaker(user)
         maker.gen_user()
-        return redirect(url_for('get_users'), code=302)
+        return redirect(url_for('get_users'), 302)
     return render_template(
         "form/index.html",
         form=form,
