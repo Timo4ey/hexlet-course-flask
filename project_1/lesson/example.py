@@ -63,10 +63,12 @@ def save_user():
 
     user = Users(nickname, email)
 
+    # !!! Need to add as a new method in Validator
     db = Paths.read_json()
     new_id = list(filter(lambda x: x['id'] == user.id, db))
     if new_id:
-        user.id = new_id[0]['id'] + 1
+        new_id = max(db, key=lambda x: x.get('id'))
+        user.get_id = new_id['id'] + 1
 
     validator = Validator(user)
     validator.validate_name()
