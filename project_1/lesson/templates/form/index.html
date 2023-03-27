@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     <title>Document</title>
 </head>
+
 <body class="new_user">
+    {% extends 'base.html' %}
+    {% block page_content %}
     <h1 >New user</h1>
     <div>
         <form action="/users", method='post'>
@@ -19,11 +22,12 @@
             {% endif %}
             {{ form.csrf_token }}
             {{ form.email.label }} {{ form.email(size=20) }}
-            {% if errors['nickname'] %}
+            {% if errors['email'] %}
                 <div class="errors">{{ errors['email'] }}</div>
             {% endif %}
             <button type="submit">submit</button>
         </form>
     </div>
+    {% endblock %}
 </body>
 </html>
