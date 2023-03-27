@@ -10,9 +10,9 @@ div.search {
     margin-right: 30px;
     width: 94vw;
     height: 50px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: gray;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: gray;
 }
 
 .search input{
@@ -21,7 +21,8 @@ div.search {
     border-radius: 5px;
     border-color:#b8c2ca;
     margin-right: 10px;
-    border-width: 3px
+    margin-top: 10px;
+    border-width: 1px
 }
 
 .search input:visited,
@@ -114,4 +115,19 @@ body.new_user h1 {
     color: red;
     font-size: 18px;
 
+}
+
+.success {
+    width: 100%;
+    margin-top: 30px;
+    display: box;
+    color: green;
+    list-style-type: none;
+    font-size: 30px;
+
+}
+
+h1 {
+    font-size: 60px;
+    padding-left: 30px;
 }
