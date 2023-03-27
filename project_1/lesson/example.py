@@ -81,4 +81,5 @@ def save_user():
     return render_template(
         "form/index.html",
         form=form,
-        errors=validator.is_valid())
+        errors=validator.is_valid()
+        ), 422
