@@ -33,7 +33,7 @@ def get_name(id):
     return redirect(url_for("register_user"))
 
 
-@app.route("/users")
+@app.route("/users", methods=['GET'])
 def get_users():
     term = request.args.get('term')
     select_users = Paths.read_json()
@@ -55,7 +55,7 @@ def register_user():
         errors={})
 
 
-@app.route('/users', methods=["POST", "GET"])
+@app.route('/users', methods=["POST"])
 def save_user():
     form = RegistrationForm()
     nickname = form.nickname.data
