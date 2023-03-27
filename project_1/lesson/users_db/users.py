@@ -22,6 +22,14 @@ class Users:
                 'email': self.email
                 }
 
+    @property
+    def get_id(self):
+        return self.id
+
+    @get_id.setter
+    def get_id(self, num):
+        self.id = num
+
 
 class UserMaker:
     def __init__(self, data: Users) -> None:

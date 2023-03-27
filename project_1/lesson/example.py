@@ -19,7 +19,7 @@ def main_page():
     return render_template("index.html", id=id, nickname=nickname)
 
 
-@app.route('/users/<int:id>')
+@app.route('/users/<int:id>', methods=["GET"])
 def get_name(id):
     data = Paths.read_json()
     result = tuple(filter(lambda x: x.get('id') == id, data))
@@ -36,14 +36,14 @@ def get_name(id):
 @app.route("/users", methods=['GET'])
 def get_users():
     term = request.args.get('term')
-    select_users = Paths.read_json()
+    select_user = Paths.read_json()
     messages = get_flashed_messages(with_categories=True)
     if term:
-        select_users = list(filter(
+        select_user = list(filter(
                         lambda x: x['nickname'][:3].lower().find(term) != -1,
-                        select_users))
+                        select_user))
     return render_template("users/index.html",
-                           users=select_users, messages=messages)
+                           users=select_user, messages=messages)
 
 
 @app.route('/users/new', methods=["GET"])
@@ -62,6 +62,12 @@ def save_user():
     email = form.email.data
 
     user = Users(nickname, email)
+
+    db = Paths.read_json()
+    new_id = list(filter(lambda x: x['id'] == user.id, db))
+    if new_id:
+        user.id = new_id[0]['id'] + 1
+
     validator = Validator(user)
     validator.validate_name()
     validator.validate_email()
