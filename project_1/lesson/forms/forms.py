@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, HiddenField
 from wtforms.validators import DataRequired, email_validator
 from ..users_db import Users
 from ..users_db import Paths
@@ -10,6 +10,7 @@ email_validator = email_validator.validate_email
 class RegistrationForm(FlaskForm):
     nickname = StringField('Nickname',  validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
+    value = HiddenField('value')
 
 
 class Validator:

@@ -69,7 +69,7 @@ body.new_user h1 {
 .new_user div form input{
     margin-left: 15px;
     margin-top: 10px;
-    margin-right: 70%;
+    margin-right: 80%;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 80px;
@@ -130,4 +130,10 @@ body.new_user h1 {
 h1 {
     font-size: 60px;
     padding-left: 30px;
+}
+
+.avbar-header ul *{
+    font-size: 30px;
+    list-style-type: none;
+    text-decoration: none;
 }

@@ -91,11 +91,13 @@ def edit_user_page(id):
 
     form = RegistrationForm()
     ids = Validator.check_user_id(id)
+    data = Validator.check_unique_id(id)
     if ids:
         return render_template("form/edit_user.html",
                                form=form,
                                errors={},
-                               id=id)
+                               id=id,
+                               data=data[0])
     if not ids:
         return render_template('errors/422.html')
 
