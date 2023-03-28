@@ -1,0 +1,7 @@
+{% block confirm %}
+    <div>
+        <h3>Are you sure?</h3>
+    <form action="{{ url_for('delete_user', id=id)}}" method="post"><button>Yes, delete</button></form>
+    <form action="{{ url_for('edit_user_page', id=id) }}"><button>No</button></form>
+    </div>
+{% endblock %}

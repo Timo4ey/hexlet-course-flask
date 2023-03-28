@@ -137,3 +137,22 @@ h1 {
     list-style-type: none;
     text-decoration: none;
 }
+
+div.hidden{
+    display: none;
+    position: absolute;
+}
+
+.hidden button{
+    display: inline;
+}
+
+.hidden{
+    font-size: 15x;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    border: 1px solid;
+    margin-left: 50%;
+}
+

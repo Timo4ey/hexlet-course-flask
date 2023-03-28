@@ -10,7 +10,7 @@ class Users:
         instance = super().__new__(cls)
         return instance
 
-    def __init__(self, name, email) -> None:
+    def __init__(self, name='', email='') -> None:
         self.id = self.id
         self.name = name
         self.email = email

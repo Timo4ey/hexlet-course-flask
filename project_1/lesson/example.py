@@ -113,3 +113,20 @@ def edit_user(id):
 
     flash("User has been updated", 'success')
     return redirect(url_for('get_name', id=id))
+
+
+@app.get("/users/<int:id>/confirm")
+def confirm_delete(id):
+    return render_template('form/confirmed.html', id=id)
+
+
+@app.post("/users/<int:id>/delete")
+def delete_user(id):
+    user = UserMaker(Users())
+    data = user.read_json_file()
+    for indx in range(len(data)):
+        if data[indx]['id'] == id:
+            del data[indx]
+    user.write_into_json(data)
+    flash('User has been deleted')
+    return redirect(url_for('get_users'))
