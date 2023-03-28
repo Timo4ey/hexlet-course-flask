@@ -11,6 +11,7 @@ python = ">=3.10"
 flask = "^2.2.3"
 flask-wtf = "^1.1.1"
 wtforms = {extras = ["email"], version = "^3.0.1"}
+flask-session = "^0.4.0"
 
 
 [tool.poetry.group.dev.dependencies]

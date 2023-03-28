@@ -56,3 +56,11 @@ class Validator:
         if id in list_ids:
             return True
         return False
+
+    @staticmethod
+    def check_email(email):
+        db = Paths.read_json()
+        mail = list(filter(lambda x: x['email'] == email, db))
+        if not mail:
+            return False
+        return mail

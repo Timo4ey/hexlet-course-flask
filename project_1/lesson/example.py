@@ -2,7 +2,7 @@ import json
 from flask import (Flask, render_template,
                    request, redirect, url_for,
                    flash, get_flashed_messages,
-                   make_response)
+                   make_response, session)
 from .users_db.users import Users, UserMaker
 from .users_db.paths import Paths
 import os
@@ -100,7 +100,6 @@ def save_user():
 
 @app.route("/users/<int:id>/edit")
 def edit_user_page(id):
-
     form = RegistrationForm()
     ids = Validator.check_user_id(id)
     data = Validator.check_unique_id(id)
@@ -142,3 +141,30 @@ def delete_user(id):
     user.write_into_json(data)
     flash('User has been deleted', 'success')
     return redirect(url_for('get_users'))
+
+
+@app.get('/login')
+def login_page():
+    form = RegistrationForm()
+    return render_template('users/login.html',
+                           form=form, errors={},
+                           log_in=session)
+
+
+@app.post('/login')
+def login():
+    form = RegistrationForm()
+    email = form.email.data
+    validator = Validator.check_email(email)
+    if validator:
+        if session.get('email') is None:
+            session['email'] = []
+            session['email'].append(email)
+        else:
+            session['email'].append(email)
+        flash('You are IN', 'success')
+        return redirect(url_for('get_users'))
+    return render_template('users/login.html',
+                           form=form,
+                           errors=validator,
+                           log_in=session), 422
