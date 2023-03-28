@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
     <title>Document</title>
 </head>
 <body>
     {% extends 'base.html' %}
     {% block page_content %}
-    <p>"id = {{ id }}"</p><br>
-    <p>"nickname = user-{{ name }}"</p>
+    {% if messages %}
+        {% for category, message in messages %}
+        <dif class="{{ category }}">{{ message }} <div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <p>id = {{ id }}</p>
+        <p>New nickname = {{ name }}"</p>
+        <p>email = {{ email }}"</p>
+    </div>
+    <button type="submit"><a href="{{ url_for('edit_user_page', id=id) }}">Edit</a></button>
     {% endblock%}
 </body>
 </html>

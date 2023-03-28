@@ -61,3 +61,20 @@ class UserMaker:
             filedata = []
         filedata.append(out)
         self.write_into_json(filedata)
+
+    def save_data(self):
+        return
+
+    @staticmethod
+    def editor(data, user_data, id):
+        for indx, user in enumerate(data):
+            if user['id'] == id:
+                data[indx]['nickname'] = user_data['nickname']
+                data[indx]['email'] = user_data['email']
+        return data
+
+    def edit_users(self, outer_id):
+        data = self.read_json_file()
+        user = self.data.output()
+        new_data = self.editor(data, user, outer_id)
+        self.write_into_json(new_data)

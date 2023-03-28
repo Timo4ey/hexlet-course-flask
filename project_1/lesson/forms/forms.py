@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, email_validator
 from ..users_db import Users
-
+from ..users_db import Paths
 
 email_validator = email_validator.validate_email
 
@@ -39,3 +39,19 @@ class Validator:
            self.errors.get('email') is None:
             return True
         return self.errors
+
+    @staticmethod
+    def check_unique_id(id):
+        db = Paths.read_json()
+        new_id = list(filter(lambda x: x['id'] == id, db))
+        if not new_id:
+            return False
+        return new_id
+
+    @staticmethod
+    def check_user_id(id):
+        db = Paths.read_json()
+        list_ids = list(map(lambda x: x['id'], db))
+        if id in list_ids:
+            return True
+        return False
