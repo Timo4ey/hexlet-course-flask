@@ -23,8 +23,21 @@
             <input type="search" name="term" value="{{ term }}">
             <button>Search</button>
         </form>
-        
+        {% if users_registered %}
+        <h3>Your users</h3>
+            {% for key in users_registered %}
+            <div>
+                
+                <ul>
+                    <li>id: {{ key['id'] }}</li>
+                    <li>Name: {{ key['nickname'] }}</li>
+                    <li>Email: {{ key['email'] }}</li>
+                </ul>
+            </div>
+            {% endfor %}
+        {% endif %}
         <div>
+            <h3>All users</h3>
             <ul>
                 {% for user in users %}
                 <li class="names"><a href="/users/{{ user.id|e }}"> {{user.nickname|e}}</a></li>

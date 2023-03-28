@@ -1,6 +1,8 @@
+import json
 from flask import (Flask, render_template,
                    request, redirect, url_for,
-                   flash, get_flashed_messages)
+                   flash, get_flashed_messages,
+                   make_response)
 from .users_db.users import Users, UserMaker
 from .users_db.paths import Paths
 import os
@@ -46,8 +48,12 @@ def get_users():
                         lambda x: x['nickname'][:3].lower().find(term) != -1,
                         select_user
                         ))
+
+    users_registered = json.loads(request.cookies.get('name', json.dumps([])))
     return render_template("users/index.html",
-                           users=select_user, messages=messages)
+                           users=select_user,
+                           messages=messages,
+                           users_registered=users_registered)
 
 
 @app.route('/users/new', methods=["GET"])
@@ -78,7 +84,13 @@ def save_user():
         flash("User was added successfully", "success")
         maker = UserMaker(user)
         maker.gen_user()
-        return redirect(url_for('get_users'), 302)
+        reg_user = json.loads(request.cookies.get('name', json.dumps([])))
+        reg_user.append(maker.data.output())
+
+        resp = make_response(redirect(url_for('get_users'), 302))
+        cookie = json.dumps(reg_user)
+        resp.set_cookie('name', cookie)
+        return resp
     return render_template(
         "form/index.html",
         form=form,
