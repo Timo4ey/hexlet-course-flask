@@ -128,5 +128,5 @@ def delete_user(id):
         if data[indx]['id'] == id:
             del data[indx]
     user.write_into_json(data)
-    flash('User has been deleted')
+    flash('User has been deleted', 'success')
     return redirect(url_for('get_users'))
