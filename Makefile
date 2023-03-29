@@ -5,7 +5,7 @@ install:
 	poetry install
 
 start:
-	flask --app project_1.example --debug run
+	poetry run flask --app project_1:app run
 
 PORT ?= 8000
 guni-start:
