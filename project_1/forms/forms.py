@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, email_validator
 from ..users_db import Users
 from ..users_db import Paths
 
+
 email_validator = email_validator.validate_email
 
 

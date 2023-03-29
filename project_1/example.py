@@ -5,13 +5,14 @@ from flask import (Flask, render_template,
                    make_response, session)
 from .users_db.users import Users, UserMaker
 from .users_db.paths import Paths
-import os
 from .forms.forms import RegistrationForm, Validator
+from flask_session import Session
+from .config import Configuration
 
 
 app = Flask(__name__)
-SECRET_KEY = os.urandom(32)
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config.from_object(Configuration)
+Session(app)
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -51,7 +52,8 @@ def get_users():
     return render_template("users/index.html",
                            users=select_user,
                            messages=messages,
-                           users_registered=users_registered)
+                           users_registered=users_registered,
+                           session=session)
 
 
 @app.route('/users/new', methods=["GET"])
@@ -71,16 +73,17 @@ def save_user():
 
     user = Users(nickname, email)
     validator = Validator(user)
+    maker = UserMaker(user)
+    ids = list(map(lambda x: x['id'], maker.read_json_file()))
     new_id = validator.check_unique_id(user.get_id)
     if new_id:
-        new_id = max(new_id, key=lambda x: x.get('id'))
-        user.get_id = new_id['id'] + 1
+        new_id = max(ids)
+        user.get_id = new_id + 1
 
     validator.validate_name()
     validator.validate_email()
     if validator.is_valid() is True:
         flash("User was added successfully", "success")
-        maker = UserMaker(user)
         maker.gen_user()
         reg_user = json.loads(request.cookies.get('name', json.dumps([])))
         reg_user.append(maker.data.output())
@@ -114,12 +117,9 @@ def edit_user_page(id):
 @app.route('/users/<int:id>/edit', methods=["POST"])
 def edit_user(id):
     data = request.form.to_dict()
-
     instance = Users(data['nickname'], data['email'])
     user = UserMaker(instance)
-
     user.edit_users(id)
-
     flash("User has been updated", 'success')
     return redirect(url_for('get_name', id=id))
 
@@ -133,9 +133,11 @@ def confirm_delete(id):
 def delete_user(id):
     user = UserMaker(Users())
     data = user.read_json_file()
+    temp_id = 0
     for indx in range(len(data)):
         if data[indx]['id'] == id:
-            del data[indx]
+            temp_id = indx
+    del data[temp_id]
     user.write_into_json(data)
     flash('User has been deleted', 'success')
     return redirect(url_for('get_users'))
@@ -146,7 +148,7 @@ def login_page():
     form = RegistrationForm()
     return render_template('users/login.html',
                            form=form, errors={},
-                           log_in=session)
+                           session=session)
 
 
 @app.post('/login')
@@ -155,14 +157,13 @@ def login():
     email = form.email.data
     validator = Validator.check_email(email)
     if validator:
-        if session.get('email') is None:
-            session['email'] = []
-            session['email'].append(email)
+        if session.get('email', None) is None:
+            session['email'] = email
         else:
-            session['email'].append(email)
+            session['email'] = email
         flash('You are IN', 'success')
         return redirect(url_for('get_users'))
     return render_template('users/login.html',
                            form=form,
                            errors=validator,
-                           log_in=session), 422
+                           session=session), 422
