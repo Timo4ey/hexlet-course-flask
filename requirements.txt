@@ -1,0 +1,19 @@
+cachelib==0.10.2
+click==8.1.3
+dnspython==2.1.0
+email-validator==1.3.1
+flake8==6.0.0
+Flask==2.2.3
+Flask-Session==0.4.0
+Flask-WTF==1.1.1
+gunicorn==20.1.0
+idna==3.4
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.2
+mccabe==0.7.0
+-e git+ssh://git@github.com/Timo4ey/hexlet-course-flask.git@636628f14ac0480946b9d58c5016ac97435109e4#egg=project_1
+pycodestyle==2.10.0
+pyflakes==3.0.1
+Werkzeug==2.2.3
+WTForms==3.0.1
