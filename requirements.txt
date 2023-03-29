@@ -12,7 +12,6 @@ itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.2
 mccabe==0.7.0
--e git+ssh://git@github.com/Timo4ey/hexlet-course-flask.git@636628f14ac0480946b9d58c5016ac97435109e4#egg=project_1
 pycodestyle==2.10.0
 pyflakes==3.0.1
 Werkzeug==2.2.3
