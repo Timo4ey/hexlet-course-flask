@@ -27,4 +27,4 @@ nixOverlays = []
 nixpkgsArchive = '293a28df6d7ff3dec1e61e37cc4ee6e6c0fb0847'
 
 [start]
-cmd = 'poetry run gunicorn --workers=4 --bind=127.0.0.1:5000 project_1:app'
+cmd = 'make guni-start'
