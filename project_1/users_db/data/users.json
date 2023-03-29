@@ -1,7 +1,7 @@
 [
     {
         "id": 5,
-        "nickname": "Tor",
+        "nickname": "Torf",
         "email": "tor@gmail.com"
     },
     {
@@ -37,6 +37,11 @@
     {
         "id": 3,
         "nickname": "Hjhj",
+        "email": "testingttttt@test.com"
+    },
+    {
+        "id": 4,
+        "nickname": "Tdf",
         "email": "testingttttt@test.com"
     }
 ]

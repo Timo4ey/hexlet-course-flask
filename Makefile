@@ -5,4 +5,4 @@ install:
 	poetry install
 
 start:
-	flask --app project_1.lesson.example --debug run
+	flask --app project_1.example --debug run
