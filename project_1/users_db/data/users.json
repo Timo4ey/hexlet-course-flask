@@ -1,47 +1,12 @@
 [
     {
-        "id": 5,
-        "nickname": "Torf",
-        "email": "tor@gmail.com"
-    },
-    {
         "id": 1,
-        "nickname": "Noviq",
-        "email": "testingttttt@test.com"
-    },
-    {
-        "id": 2,
-        "nickname": "Noviq",
-        "email": "testingttttt@test.com"
-    },
-    {
-        "id": 2,
-        "nickname": "Noviq",
-        "email": "testingttttt@test.com"
-    },
-    {
-        "id": 2,
         "nickname": "Tor",
-        "email": "tor@gmail.com"
-    },
-    {
-        "id": 2,
-        "nickname": "Bew",
         "email": "testingttttt@test.com"
     },
     {
         "id": 2,
-        "nickname": "Tor",
-        "email": "tor@gmail.com"
-    },
-    {
-        "id": 3,
-        "nickname": "Hjhj",
-        "email": "testingttttt@test.com"
-    },
-    {
-        "id": 4,
-        "nickname": "Tdf",
+        "nickname": "Noviq",
         "email": "testingttttt@test.com"
     }
 ]

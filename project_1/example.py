@@ -16,9 +16,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/', methods=["GET", "POST"])
 def main_page():
-    id = request.args.get('id')
-    nickname = request.args.get('nickname')
-    return render_template("index.html", id=id, nickname=nickname)
+    return redirect(url_for('get_users'))
 
 
 @app.route('/users/<int:id>', methods=["GET"])
