@@ -1,6 +1,3 @@
-
- Nixpacks file based configuration is experimental and may change
-
 providers = []
 buildImage = 'ghcr.io/railwayapp/nixpacks:ubuntu-1679356985'
 
