@@ -2,6 +2,6 @@ import os
 
 
 class Configuration():
-    DEBUG = True
+    DEBUG = False
     SECRET_KEY = os.urandom(32)
     SESSION_TYPE = 'filesystem'
