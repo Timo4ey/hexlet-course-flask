@@ -17,6 +17,7 @@ paths = ['/opt/venv/bin']
 nixPkgs = [
     'python310',
     'gcc',
+    'poetry'
 ]
 nixLibs = [
     'zlib',
